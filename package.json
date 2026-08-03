@@ -1,0 +1,15 @@
+{
+  "name": "bang-geo-monitor-maintainer-tools",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Maintainer-only tooling for the synthetic BANG README demo image",
+  "scripts": {
+    "render:demo": "node tools/render_demo.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

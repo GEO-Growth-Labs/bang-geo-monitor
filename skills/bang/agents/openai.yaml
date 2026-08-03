@@ -1,0 +1,13 @@
+interface:
+  display_name: "BANG GEO Monitor"
+  short_description: "Generate a verified GEO monitoring sheet in Feishu"
+  default_prompt: "Use $bang to run GEO monitoring for a customer with the default 10 recent collections."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "yishan-geo"
+      description: "Yishan GEO customer, collection-task, and report tools"
+
+policy:
+  allow_implicit_invocation: true
