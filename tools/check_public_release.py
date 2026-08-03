@@ -19,6 +19,7 @@ DEMO_SHA256 = "78251b6bf97b641cef2885c583ca8145d7a6688600a205ac02d2885afce9dd89"
 RULES = {
     "GitHub token": re.compile(r"\bgh[opsu]_[A-Za-z0-9]{20,}\b"),
     "OpenAI-style secret": re.compile(r"\bsk-[A-Za-z0-9_-]{20,}\b"),
+    "Wanhu admin key": re.compile(r"\bagt_[A-Za-z0-9_-]{12,}\b"),
     "Bearer literal": re.compile(r"(?i)authorization\s*[:=]\s*bearer\s+[A-Za-z0-9._-]{16,}"),
     "live Feishu token URL": re.compile(
         r"https://(?!your-team\.)[A-Za-z0-9-]+\.(?:feishu\.cn|larksuite\.com)/(?:wiki|sheets)/[A-Za-z0-9]{12,}"
@@ -33,7 +34,9 @@ RULES = {
         r"(?i)(?:task|mainTask|node|spreadsheet|sheet|wiki)[_-]?(?:id|token)\s*[:=]\s*[\"'`]?"
         r"(?!(?:YOUR|REPLACE|EXAMPLE|REDACTED))[A-Za-z0-9_-]{12,}"
     ),
-    "live MCP endpoint": re.compile(r"https://(?![^\s'\"]*\.example(?:/|\b))[^\s'\"]+/mcp\b"),
+    "unapproved live MCP endpoint": re.compile(
+        r"https?://(?!8\.141\.17\.133:1024/mcp\b)(?![^\s'\"]*\.example(?:/|\b))[^\s'\"]+/mcp\b"
+    ),
     "report download URL": re.compile(r"https://[^\s'\"]+\.(?:xlsx|xls|csv)(?:\?[^\s'\"]*)?", re.I),
 }
 

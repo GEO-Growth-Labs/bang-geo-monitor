@@ -1,6 +1,6 @@
 # Yishan GEO MCP Contract
 
-Use the locally configured MCP server name from `~/.config/bang/config.json`. The server name is configurable; the tool contract is not.
+Use the `wanhu-admin` Streamable HTTP MCP server configured in Codex. The public endpoint is `http://8.141.17.133:1024/mcp`; keep its Bearer Key in Codex credential configuration or an environment variable, never in this skill repository.
 
 ## Required tools
 
@@ -10,8 +10,8 @@ Use the locally configured MCP server name from `~/.config/bang/config.json`. Th
 2. `geo.enterprise.tasks`
    - Input: selected enterprise identifier.
    - Output: main collection tasks with status, report status, timestamps, task identifier, and repeat-history metadata when applicable.
-3. Repeat-history task listing
-   - Use the repeat-history tool exposed by the server when a main task indicates recurring executions.
+3. `geo.task.search`
+   - Search repeat-task history when a main task indicates recurring executions.
    - Flatten repeat executions with main tasks before sorting.
 4. `geo.task.reports`
    - Input: `{ "mainTaskId": "<task id>" }`.
@@ -27,7 +27,7 @@ Use the locally configured MCP server name from `~/.config/bang/config.json`. Th
 
 ## Safe fallback
 
-Use a direct Streamable HTTP MCP request only when the configured MCP URL and bearer-token environment variable already exist in Codex configuration. Never read a bearer value into chat, print it, store it in this repository, or add MCP configuration during a BANG run.
+Use a direct Streamable HTTP MCP request only when the configured URL and Bearer authentication already exist in Codex configuration. Never read a bearer value into chat, print it, or store it in this repository.
 
 ## Missing tools
 

@@ -23,7 +23,7 @@
 
 - 客户名称、关键词、竞品、采集次数或历史报告数据。
 - 飞书租户域名、Space ID、Node Token、Spreadsheet Token。
-- MCP URL、Bearer Token、API Key 或报告下载 URL。
+- MCP Bearer Token、API Key 或报告下载 URL。公开的 MCP 服务地址可以写入安装说明，但凭据不得提交。
 - 任何历史客户模板 Token。
 
 BANG 不再复制其他客户的飞书表格作为模板，而是按固定规范从空白工作表生成输出。
@@ -62,21 +62,23 @@ Codex 通常会自动发现新 Skill；如果 `$bang` 没有出现，请重启 C
 
 ### 1. 配置移山 GEO MCP
 
-在 Codex 设置中打开 **MCP servers**，添加一个 Streamable HTTP 服务，命名为 `yishan-geo`，填入移山科技提供的 URL 和认证信息，然后重启 Codex。公开版固定使用该名称，使 Skill 元数据、配置预检和运行时工具保持一致。
+在 Codex 设置中打开 **MCP servers**，添加一个 Streamable HTTP 服务，命名为 `wanhu-admin`，URL 填写 `http://8.141.17.133:1024/mcp`，再填入移山科技提供的 Bearer Key，然后重启 Codex。公开版固定使用该名称，使 Skill 元数据、配置预检和运行时工具保持一致。
 
 也可以使用 CLI。不要把真实 Token 写进本仓库：
 
+团队 JSON 中的 `headers.Authorization = Bearer ...` 与下面配置逻辑一致；这里改用环境变量保存完整 Key，避免凭据出现在命令历史、README 或 Git 提交中。
+
 ```bash
-export YISHAN_GEO_MCP_TOKEN='<由移山科技提供>'
-codex mcp add yishan-geo \
-  --url 'https://YOUR-YISHAN-MCP-ENDPOINT.example/mcp' \
-  --bearer-token-env-var YISHAN_GEO_MCP_TOKEN
+export WANHU_ADMIN_BEARER_TOKEN='<完整 agt_ Key>'
+codex mcp add wanhu-admin \
+  --url 'http://8.141.17.133:1024/mcp' \
+  --bearer-token-env-var WANHU_ADMIN_BEARER_TOKEN
 ```
 
 检查 MCP 是否已登记：
 
 ```bash
-codex mcp get yishan-geo
+codex mcp get wanhu-admin
 ```
 
 ### 2. 配置飞书写入链接
@@ -86,7 +88,7 @@ codex mcp get yishan-geo
 ```bash
 BANG_SKILL_DIR="${AGENTS_SKILLS_HOME:-$HOME/.agents/skills}/bang"
 python3 "$BANG_SKILL_DIR/scripts/configure.py" \
-  --mcp-server yishan-geo \
+  --mcp-server wanhu-admin \
   --feishu-parent-url 'https://your-team.feishu.cn/wiki/YOUR_NODE_TOKEN'
 ```
 

@@ -21,14 +21,14 @@ SPEC.loader.exec_module(CONFIGURE)
 class ConfigureTests(unittest.TestCase):
     def test_validates_expected_fields(self):
         self.assertEqual(CONFIGURE.validate_config({
-            "mcp_server": "yishan-geo",
+            "mcp_server": "wanhu-admin",
             "feishu_parent_url": "https://your-team.feishu.cn/wiki/EXAMPLE_TOKEN",
         }), [])
         self.assertTrue(CONFIGURE.validate_config({
             "mcp_server": "",
             "feishu_parent_url": "http://example.com/file",
         }))
-        self.assertIn("mcp_server must be yishan-geo", CONFIGURE.validate_config({
+        self.assertIn("mcp_server must be wanhu-admin", CONFIGURE.validate_config({
             "mcp_server": "another-name",
             "feishu_parent_url": "https://your-team.feishu.cn/wiki/EXAMPLE_TOKEN",
         }))
@@ -40,12 +40,12 @@ class ConfigureTests(unittest.TestCase):
                 sys.executable,
                 str(SCRIPT),
                 "--config", str(path),
-                "--mcp-server", "yishan-geo",
+                "--mcp-server", "wanhu-admin",
                 "--feishu-parent-url", "https://your-team.feishu.cn/wiki/EXAMPLE_TOKEN",
             ], check=False, capture_output=True, text=True)
             self.assertEqual(write.returncode, 0, write.stderr)
             self.assertEqual(path.stat().st_mode & 0o777, 0o600)
-            self.assertEqual(json.loads(path.read_text())["mcp_server"], "yishan-geo")
+            self.assertEqual(json.loads(path.read_text())["mcp_server"], "wanhu-admin")
 
             show = subprocess.run([
                 sys.executable, str(SCRIPT), "--config", str(path), "--show"

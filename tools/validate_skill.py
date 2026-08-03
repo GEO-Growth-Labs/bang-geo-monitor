@@ -53,8 +53,10 @@ def main() -> int:
     metadata = (SKILL / "agents" / "openai.yaml").read_text(encoding="utf-8")
     if 'default_prompt: "' not in metadata or "$bang" not in metadata:
         errors.append("openai.yaml default_prompt must explicitly mention $bang")
-    if 'value: "yishan-geo"' not in metadata:
-        errors.append("openai.yaml must declare the yishan-geo MCP dependency")
+    if 'value: "wanhu-admin"' not in metadata:
+        errors.append("openai.yaml must declare the wanhu-admin MCP dependency")
+    if 'url: "http://8.141.17.133:1024/mcp"' not in metadata:
+        errors.append("openai.yaml must declare the approved wanhu-admin MCP URL")
 
     for link in re.findall(r"\[[^\]]+\]\((references/[^)]+)\)", content):
         if not (SKILL / link).is_file():

@@ -2,7 +2,7 @@
 
 ## Configuration
 
-- `config not found`: run `python3 scripts/configure.py --mcp-server yishan-geo --feishu-parent-url '<URL>'`.
+- `config not found`: run `python3 scripts/configure.py --mcp-server wanhu-admin --feishu-parent-url '<URL>'`.
 - `MCP server not configured`: add it in Codex, restart Codex, and rerun preflight.
 - `invalid Feishu URL`: use a writable Feishu/Lark wiki or sheets URL, not a browser share redirect.
 

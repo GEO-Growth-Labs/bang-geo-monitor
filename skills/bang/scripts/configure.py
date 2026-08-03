@@ -14,7 +14,7 @@ from urllib.parse import urlparse
 
 DEFAULT_CONFIG = Path.home() / ".config" / "bang" / "config.json"
 ALLOWED_HOST_SUFFIXES = (".feishu.cn", ".larksuite.com")
-REQUIRED_MCP_SERVER = "yishan-geo"
+REQUIRED_MCP_SERVER = "wanhu-admin"
 
 
 def validate_config(data: dict[str, object]) -> list[str]:

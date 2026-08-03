@@ -6,8 +6,10 @@ interface:
 dependencies:
   tools:
     - type: "mcp"
-      value: "yishan-geo"
+      value: "wanhu-admin"
       description: "Yishan GEO customer, collection-task, and report tools"
+      transport: "streamable_http"
+      url: "http://8.141.17.133:1024/mcp"
 
 policy:
   allow_implicit_invocation: true
