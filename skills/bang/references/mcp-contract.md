@@ -1,6 +1,6 @@
 # Yishan GEO MCP Contract
 
-Use the `wanhu-admin` Streamable HTTP MCP server configured in Codex. The public endpoint is `http://8.141.17.133:1024/mcp`; keep its Bearer Key in Codex credential configuration or an environment variable, never in this skill repository.
+Use the `wanhu-admin` Streamable HTTP MCP server configured in Codex. The public endpoint format is `http://8.xxx.xx.133:1024/mcp`; obtain the complete address from the Yishan team. Keep its Bearer Key in Codex credential configuration or an environment variable, never in this skill repository.
 
 ## Required tools
 

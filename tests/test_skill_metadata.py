@@ -21,9 +21,10 @@ class SkillMetadataTests(unittest.TestCase):
 
     def test_openai_yaml_mentions_skill_in_default_prompt(self):
         content = (ROOT / "skills" / "bang" / "agents" / "openai.yaml").read_text(encoding="utf-8")
+        private_address = ".".join(("8", "141", "17", "133"))
         self.assertIn("$bang", content)
         self.assertIn('value: "wanhu-admin"', content)
-        self.assertIn('url: "http://8.141.17.133:1024/mcp"', content)
+        self.assertNotIn(private_address, content)
 
 
 if __name__ == "__main__":

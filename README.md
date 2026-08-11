@@ -62,7 +62,7 @@ Codex 通常会自动发现新 Skill；如果 `$bang` 没有出现，请重启 C
 
 ### 1. 配置移山 GEO MCP
 
-在 Codex 设置中打开 **MCP servers**，添加一个 Streamable HTTP 服务，命名为 `wanhu-admin`，URL 填写 `http://8.141.17.133:1024/mcp`，再填入移山科技提供的 Bearer Key，然后重启 Codex。公开版固定使用该名称，使 Skill 元数据、配置预检和运行时工具保持一致。
+在 Codex 设置中打开 **MCP servers**，添加一个 Streamable HTTP 服务，命名为 `wanhu-admin`，URL 格式为 `http://8.xxx.xx.133:1024/mcp`。请向移山科技团队获取完整地址和 Bearer Key，然后重启 Codex。公开版固定使用该名称，使 Skill 元数据、配置预检和运行时工具保持一致。
 
 也可以使用 CLI。不要把真实 Token 写进本仓库：
 
@@ -71,7 +71,7 @@ Codex 通常会自动发现新 Skill；如果 `$bang` 没有出现，请重启 C
 ```bash
 export WANHU_ADMIN_BEARER_TOKEN='<完整 agt_ Key>'
 codex mcp add wanhu-admin \
-  --url 'http://8.141.17.133:1024/mcp' \
+  --url 'http://8.xxx.xx.133:1024/mcp' \
   --bearer-token-env-var WANHU_ADMIN_BEARER_TOKEN
 ```
 

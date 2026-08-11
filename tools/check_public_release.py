@@ -35,8 +35,9 @@ RULES = {
         r"(?!(?:YOUR|REPLACE|EXAMPLE|REDACTED))[A-Za-z0-9_-]{12,}"
     ),
     "unapproved live MCP endpoint": re.compile(
-        r"https?://(?!8\.141\.17\.133:1024/mcp\b)(?![^\s'\"]*\.example(?:/|\b))[^\s'\"]+/mcp\b"
+        r"https?://(?!8\.xxx\.xx\.133:1024/mcp\b)(?![^\s'\"]*\.example(?:/|\b))[^\s'\"]+/mcp\b"
     ),
+    "private Wanhu endpoint exposure": re.compile(r"8\.141\.17\.133"),
     "report download URL": re.compile(r"https://[^\s'\"]+\.(?:xlsx|xls|csv)(?:\?[^\s'\"]*)?", re.I),
 }
 

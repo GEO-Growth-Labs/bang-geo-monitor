@@ -51,12 +51,13 @@ def main() -> int:
             errors.append(f"missing required file: {path.relative_to(ROOT)}")
 
     metadata = (SKILL / "agents" / "openai.yaml").read_text(encoding="utf-8")
+    private_address = ".".join(("8", "141", "17", "133"))
     if 'default_prompt: "' not in metadata or "$bang" not in metadata:
         errors.append("openai.yaml default_prompt must explicitly mention $bang")
     if 'value: "wanhu-admin"' not in metadata:
         errors.append("openai.yaml must declare the wanhu-admin MCP dependency")
-    if 'url: "http://8.141.17.133:1024/mcp"' not in metadata:
-        errors.append("openai.yaml must declare the approved wanhu-admin MCP URL")
+    if private_address in metadata:
+        errors.append("openai.yaml must not expose the private wanhu-admin MCP address")
 
     for link in re.findall(r"\[[^\]]+\]\((references/[^)]+)\)", content):
         if not (SKILL / link).is_file():
